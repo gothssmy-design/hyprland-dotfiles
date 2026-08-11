@@ -20,26 +20,21 @@
 
 ---
 
+## 📸 Screenshots
+
 <div align="center">
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  [ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ]          22:00    ⚡ 100%  󰤨   │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│   ┌──────────────────────────────────────────┐                  │
-│   │  dd@thinkpad ~                           │                  │
-│   │  $ neofetch                              │                  │
-│   │                                          │                  │
-│   │     OS: Linux Mint 22.3                  │                  │
-│   │     WM: Hyprland 0.56                    │                  │
-│   │     Terminal: foot                       │                  │
-│   │     Font: JetBrainsMono Nerd Font        │                  │
-│   │     Theme: Minimalist Vintage Retro      │                  │
-│   └──────────────────────────────────────────┘                  │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
+### ✦ Terminal & System Fetch
+![Terminal & Neofetch](assets/screenshot1.png)
+
+### ✦ Tiling Window Layout
+![Tiling Window Layout](assets/screenshot2.png)
+
+### ✦ Wofi Application Launcher
+![Wofi Launcher](assets/screenshot3.png)
+
+### ✦ Multi-Window Workspace
+![Multi-Window Workspace](assets/screenshot4.png)
 
 </div>
 
@@ -108,26 +103,6 @@ curl -sSL https://raw.githubusercontent.com/gothssmy-design/hyprland-dotfiles/ma
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/gothssmy-design/hyprland-dotfiles/main/install.sh | bash
-```
-
-> Same command — the script detects existing install and pulls the latest changes.
-
----
-
-## ✦ Manual Install
-
-```bash
-# Clone the repo
-git clone https://github.com/gothssmy-design/hyprland-dotfiles ~/.dotfiles
-
-# Copy configs
-cp -r ~/.dotfiles/.config/* ~/.config/
-
-# Make scripts executable
-chmod +x ~/.config/hypr/*.sh
-
-# Reload Hyprland
-hyprctl reload
 ```
 
 ---

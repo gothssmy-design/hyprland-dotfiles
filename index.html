@@ -171,6 +171,48 @@
             justify-content: space-between;
         }
 
+        /* GALLERY SCREENSHOTS */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        @media (max-width: 600px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .screenshot-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .screenshot-card:hover {
+            border-color: var(--border-highlight);
+            transform: translateY(-2px);
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .screenshot-caption {
+            padding: 0.8rem 1rem;
+            font-size: 0.85rem;
+            color: var(--text-bright);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -234,7 +276,7 @@
         .terminal-body {
             padding: 1.5rem;
             font-size: 0.9rem;
-            min-height: 260px;
+            min-height: 240px;
             overflow-x: auto;
         }
 
@@ -316,9 +358,9 @@
             <span class="badge">v0.56</span>
         </div>
         <nav>
+            <a href="#gallery">Screenshots</a>
             <a href="#features">Features</a>
             <a href="#binds">Keybinds</a>
-            <a href="#install">Install</a>
             <a href="https://github.com/gothssmy-design/hyprland-dotfiles" target="_blank">GitHub ↗</a>
         </nav>
     </header>
@@ -333,6 +375,49 @@
                 <button class="btn-copy" onclick="copyCommand()">COPY</button>
             </div>
         </section>
+
+        <!-- SCREENSHOT GALLERY -->
+        <div class="section-title" id="gallery">
+            <span>✦ DESKTOP GALLERY</span>
+        </div>
+        <div class="gallery-grid">
+            <div class="screenshot-card">
+                <a href="assets/screenshot1.png" target="_blank">
+                    <img src="assets/screenshot1.png" alt="Terminal Fetch">
+                </a>
+                <div class="screenshot-caption">
+                    <span>Terminal & System Fetch</span>
+                    <span class="t-dim">Workspace 2</span>
+                </div>
+            </div>
+            <div class="screenshot-card">
+                <a href="assets/screenshot2.png" target="_blank">
+                    <img src="assets/screenshot2.png" alt="Tiling Window Layout">
+                </a>
+                <div class="screenshot-caption">
+                    <span>3-Pane Tiling Layout</span>
+                    <span class="t-dim">Workspace 3</span>
+                </div>
+            </div>
+            <div class="screenshot-card">
+                <a href="assets/screenshot3.png" target="_blank">
+                    <img src="assets/screenshot3.png" alt="Wofi Application Launcher">
+                </a>
+                <div class="screenshot-caption">
+                    <span>Wofi Application Launcher</span>
+                    <span class="t-dim">Workspace 4</span>
+                </div>
+            </div>
+            <div class="screenshot-card">
+                <a href="assets/screenshot4.png" target="_blank">
+                    <img src="assets/screenshot4.png" alt="Multi-Window Workspace">
+                </a>
+                <div class="screenshot-caption">
+                    <span>Multi-Window Floating Workspace</span>
+                    <span class="t-dim">Workspace 5</span>
+                </div>
+            </div>
+        </div>
 
         <!-- TERMINAL SIMULATOR -->
         <div class="terminal-window">
