@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hyprland Dotfiles // Universal Minimalist Vintage Retro Setup</title>
-    <meta name="description" content="Universal Minimalist Vintage Retro Hyprland setup for any Linux distribution. Dual 120Hz monitor support, auto AC/battery power management, and monochrome aesthetics.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hyprland Dotfiles // Minimalist Retro Setup</title>
+    <meta name="description" content="Minimalist Retro Hyprland setup for Linux. Fast, clean, dual 120Hz monitor support, auto power profiles, and monochrome aesthetics.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #0a0a0a;
@@ -20,8 +20,7 @@
             --text-dim: #666666;
             --accent-green: #44aa44;
             --accent-cyan: #44aaaa;
-            --accent-purple: #aa44aa;
-            --accent-yellow: #aaaa44;
+            --accent-red: #cc4444;
             --font-mono: 'JetBrains Mono', monospace;
         }
 
@@ -37,26 +36,19 @@
             font-family: var(--font-mono);
             font-size: 14px;
             line-height: 1.6;
-            padding: 0;
-            margin: 0;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         a {
             color: var(--border-highlight);
             text-decoration: none;
-            transition: color 0.15s ease;
-        }
-
-        a:hover {
-            color: var(--text-bright);
-            text-decoration: underline;
         }
 
         header {
             border-bottom: 1px solid var(--border-color);
             background-color: var(--bg-card);
-            padding: 1.5rem 2rem;
+            padding: 1rem 1.5rem;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -66,82 +58,77 @@
         }
 
         .logo {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             letter-spacing: 1px;
             color: var(--text-bright);
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            cursor: pointer;
+            user-select: none;
         }
 
         .badge {
             background: #222;
             border: 1px solid var(--border-color);
             color: #888;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             padding: 2px 6px;
-            border-radius: 2px;
         }
 
         nav {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         nav a {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-dim);
         }
 
-        nav a:hover {
-            color: var(--text-bright);
-            text-decoration: none;
-        }
-
         .container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 3rem 1.5rem;
+            padding: 2rem 1rem;
         }
 
         .hero {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .hero h1 {
-            font-size: 2.2rem;
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
             color: var(--text-bright);
             margin-bottom: 0.5rem;
             font-weight: 700;
-            letter-spacing: -0.5px;
         }
 
         .hero p {
             color: var(--text-dim);
-            font-size: 1rem;
-            margin-bottom: 2rem;
+            font-size: clamp(0.85rem, 3vw, 0.95rem);
+            margin-bottom: 1.5rem;
         }
 
         .command-box {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            padding: 1rem 1.5rem;
-            display: inline-flex;
+            padding: 0.8rem 1rem;
+            display: flex;
+            flex-wrap: wrap;
             align-items: center;
-            gap: 1rem;
+            justify-content: space-between;
+            gap: 0.8rem;
             max-width: 100%;
             overflow-x: auto;
-            position: relative;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
 
         .command-text {
             color: var(--accent-green);
-            font-family: var(--font-mono);
-            font-size: 0.95rem;
-            white-space: nowrap;
+            font-size: clamp(0.75rem, 2.5vw, 0.85rem);
+            word-break: break-all;
+            text-align: left;
         }
 
         .btn-copy {
@@ -149,10 +136,14 @@
             border: 1px solid var(--border-color);
             color: var(--text-main);
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             padding: 0.4rem 0.8rem;
             cursor: pointer;
-            transition: all 0.15s ease;
+            width: 100%;
+        }
+
+        @media (min-width: 600px) {
+            .btn-copy { width: auto; }
         }
 
         .btn-copy:hover {
@@ -161,40 +152,29 @@
         }
 
         .section-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-bright);
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
-        /* GALLERY SCREENSHOTS */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-        }
-
-        @media (max-width: 600px) {
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
         }
 
         .screenshot-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             overflow: hidden;
-            transition: border-color 0.2s ease, transform 0.2s ease;
-        }
-
-        .screenshot-card:hover {
-            border-color: var(--border-highlight);
-            transform: translateY(-2px);
         }
 
         .screenshot-card img {
@@ -205,101 +185,96 @@
         }
 
         .screenshot-caption {
-            padding: 0.8rem 1rem;
-            font-size: 0.85rem;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.8rem;
             color: var(--text-bright);
             display: flex;
             justify-content: space-between;
+        }
+
+        /* TERMINAL PREVIEW & INTERACTIVE EASTER EGG */
+        .terminal-window {
+            background: #121212;
+            border: 1px solid var(--border-color);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .terminal-header {
+            background: #1a1a1a;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.5rem 0.8rem;
+            display: flex;
             align-items: center;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .terminal-controls {
+            display: flex;
+            gap: 5px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #333;
+        }
+
+        .terminal-body {
+            padding: 1rem;
+            font-size: clamp(0.75rem, 2.2vw, 0.85rem);
+            min-height: 220px;
+            max-height: 380px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        .t-input {
+            background: transparent;
+            border: none;
+            color: var(--text-bright);
+            font-family: var(--font-mono);
+            font-size: inherit;
+            outline: none;
+            width: 60%;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
             margin-bottom: 3rem;
         }
 
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            padding: 1.5rem;
-            transition: border-color 0.2s ease;
-        }
-
-        .card:hover {
-            border-color: var(--border-highlight);
+            padding: 1.2rem;
         }
 
         .card h3 {
             color: var(--text-bright);
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
         }
 
         .card p {
             color: var(--text-dim);
-            font-size: 0.85rem;
-        }
-
-        /* TERMINAL EMULATOR PREVIEW */
-        .terminal-window {
-            background: #121212;
-            border: 1px solid var(--border-color);
-            margin-bottom: 4rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-        }
-
-        .terminal-header {
-            background: #1a1a1a;
-            border-bottom: 1px solid var(--border-color);
-            padding: 0.6rem 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
             font-size: 0.8rem;
-            color: var(--text-dim);
         }
 
-        .terminal-controls {
-            display: flex;
-            gap: 6px;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #333;
-        }
-
-        .terminal-body {
-            padding: 1.5rem;
-            font-size: 0.9rem;
-            min-height: 240px;
-            overflow-x: auto;
-        }
-
-        .t-green { color: var(--accent-green); }
-        .t-cyan { color: var(--accent-cyan); }
-        .t-yellow { color: var(--accent-yellow); }
-        .t-dim { color: var(--text-dim); }
-        .t-bright { color: var(--text-bright); }
-
-        /* SEARCHABLE TABLE */
         .search-box {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             color: var(--text-bright);
             font-family: var(--font-mono);
-            padding: 0.5rem 1rem;
-            width: 240px;
-            font-size: 0.85rem;
-        }
-
-        .search-box:focus {
-            outline: none;
-            border-color: var(--border-highlight);
+            padding: 0.4rem 0.8rem;
+            width: 100%;
+            max-width: 220px;
+            font-size: 0.8rem;
         }
 
         table {
@@ -311,41 +286,56 @@
         }
 
         th, td {
-            padding: 0.8rem 1.2rem;
+            padding: 0.6rem 0.8rem;
             text-align: left;
             border-bottom: 1px solid var(--border-color);
+            font-size: 0.8rem;
         }
 
         th {
             background: var(--bg-tertiary);
             color: var(--text-bright);
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-
-        td {
-            font-size: 0.85rem;
-        }
-
-        tr:hover {
-            background: rgba(255,255,255,0.02);
         }
 
         kbd {
             background: #222;
             border: 1px solid #444;
             color: #fff;
-            padding: 2px 6px;
-            font-size: 0.8rem;
+            padding: 1px 4px;
+            font-size: 0.75rem;
+        }
+
+        /* HIDDEN EASTER EGG OVERLAY */
+        #easterEggOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            color: #00ff66;
+            z-index: 1000;
+            padding: 2rem;
             font-family: var(--font-mono);
+            overflow-y: auto;
+        }
+
+        .egg-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.2rem;
         }
 
         footer {
             border-top: 1px solid var(--border-color);
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
             color: var(--text-dim);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             background: var(--bg-card);
         }
     </style>
@@ -353,14 +343,13 @@
 <body>
 
     <header>
-        <div class="logo">
+        <div class="logo" onclick="eggClick()" title="Click me 5 times...">
             <span>HYPRLAND // RETRO</span>
-            <span class="badge">Universal</span>
+            <span class="badge">v0.56</span>
         </div>
         <nav>
-            <a href="#gallery">Screenshots</a>
-            <a href="#features">Features</a>
-            <a href="#binds">Keybinds</a>
+            <a href="#gallery">Screens</a>
+            <a href="#binds">Binds</a>
             <a href="https://github.com/gothssmy-design/hyprland-dotfiles" target="_blank">GitHub ↗</a>
         </nav>
     </header>
@@ -368,8 +357,8 @@
     <div class="container">
 
         <section class="hero">
-            <h1>MINIMALIST VINTAGE RETRO</h1>
-            <p>Universal Hyprland Setup for Any Linux Distribution & Hardware</p>
+            <h1>MINIMALIST RETRO</h1>
+            <p>Monochrome tiling setup · Dual 120Hz displays · Zero fluff</p>
             <div class="command-box">
                 <span class="command-text">curl -sSL https://raw.githubusercontent.com/gothssmy-design/hyprland-dotfiles/main/install.sh | bash</span>
                 <button class="btn-copy" onclick="copyCommand()">COPY INSTALL COMMAND</button>
@@ -386,40 +375,43 @@
                     <img src="assets/screenshot1.png" alt="Terminal Fetch">
                 </a>
                 <div class="screenshot-caption">
-                    <span>Terminal & System Fetch</span>
-                    <span class="t-dim">Workspace 2</span>
+                    <span>Fetch & Terminal</span>
+                    <span style="color:#666">Workspace 2</span>
                 </div>
             </div>
             <div class="screenshot-card">
                 <a href="assets/screenshot2.png" target="_blank">
-                    <img src="assets/screenshot2.png" alt="Tiling Window Layout">
+                    <img src="assets/screenshot2.png" alt="3-Pane Tiling">
                 </a>
                 <div class="screenshot-caption">
-                    <span>3-Pane Tiling Layout</span>
-                    <span class="t-dim">Workspace 3</span>
+                    <span>3-Pane Tiling</span>
+                    <span style="color:#666">Workspace 3</span>
                 </div>
             </div>
             <div class="screenshot-card">
                 <a href="assets/screenshot3.png" target="_blank">
-                    <img src="assets/screenshot3.png" alt="Wofi Application Launcher">
+                    <img src="assets/screenshot3.png" alt="Wofi Launcher">
                 </a>
                 <div class="screenshot-caption">
-                    <span>Wofi Application Launcher</span>
-                    <span class="t-dim">Workspace 4</span>
+                    <span>Wofi Launcher</span>
+                    <span style="color:#666">Workspace 4</span>
                 </div>
             </div>
             <div class="screenshot-card">
                 <a href="assets/screenshot4.png" target="_blank">
-                    <img src="assets/screenshot4.png" alt="Multi-Window Workspace">
+                    <img src="assets/screenshot4.png" alt="Multi-Window">
                 </a>
                 <div class="screenshot-caption">
-                    <span>Multi-Window Floating Workspace</span>
-                    <span class="t-dim">Workspace 5</span>
+                    <span>Multi-Window</span>
+                    <span style="color:#666">Workspace 5</span>
                 </div>
             </div>
         </div>
 
-        <!-- TERMINAL SIMULATOR -->
+        <!-- INTERACTIVE TERMINAL & EASTER EGG -->
+        <div class="section-title">
+            <span>✦ INTERACTIVE TERMINAL (Try typing commands)</span>
+        </div>
         <div class="terminal-window">
             <div class="terminal-header">
                 <div class="terminal-controls">
@@ -428,52 +420,51 @@
                     <div class="dot"></div>
                 </div>
                 <span>user@linux ~ foot</span>
-                <span>bash 5.2</span>
+                <span>type 'help' or 'sl'</span>
             </div>
-            <div class="terminal-body" id="terminal">
-                <p><span class="t-green">user@linux</span>:<span class="t-cyan">~</span>$ neofetch</p>
-                <br>
-                <p class="t-cyan">             ...-:::::-...</p>
-                <p class="t-cyan">          .-MMMMMMMMMMMMMMM-.</p>
-                <p class="t-cyan">      .-MMMM`..-:::::::-..`MMMM-.</p>
-                <p class="t-bright">  OS: <span class="t-dim">Linux (Any Distribution)</span></p>
-                <p class="t-bright">  WM: <span class="t-dim">Hyprland 0.56+</span></p>
-                <p class="t-bright">  Terminal: <span class="t-dim">foot (Tokyo Night Theme)</span></p>
-                <p class="t-bright">  Font: <span class="t-dim">JetBrainsMono Nerd Font</span></p>
-                <p class="t-bright">  Displays: <span class="t-dim">Single / Dual Monitor (120Hz supported)</span></p>
-                <p class="t-bright">  Power Daemon: <span class="t-green">Active (Auto AC/Battery Profile)</span></p>
-                <br>
-                <p><span class="t-green">user@linux</span>:<span class="t-cyan">~</span>$ <span class="t-dim">_</span></p>
+            <div class="terminal-body" id="termOutput">
+<span style="color:#44aa44">user@linux</span>:<span style="color:#44aaaa">~</span>$ neofetch
+<span style="color:#44aaaa">             ...-:::::-...</span>
+<span style="color:#44aaaa">          .-MMMMMMMMMMMMMMM-.</span>
+<span style="color:#44aaaa">      .-MMMM`..-:::::::-..`MMMM-.</span>
+  OS: Linux (Universal)
+  WM: Hyprland 0.56
+  Terminal: foot (Tokyo Night)
+  Power Daemon: Active (AC/Battery)
+            </div>
+            <div style="padding: 0 1rem 0.8rem; display:flex; align-items:center;">
+                <span style="color:#44aa44">user@linux</span>:<span style="color:#44aaaa">~</span>$&nbsp;
+                <input type="text" class="t-input" id="termInput" autofocus onkeydown="handleTerminal(event)">
             </div>
         </div>
 
         <!-- FEATURES GRID -->
-        <div class="section-title" id="features">
-            <span>✦ HIGHLIGHTS FOR ALL USERS</span>
+        <div class="section-title">
+            <span>✦ CORE FEATURES</span>
         </div>
         <div class="grid">
             <div class="card">
-                <h3>🌍 100% Universal Compatibility</h3>
-                <p>Designed for any Linux user on any machine. Dynamic user path resolution ($HOME) and automatic wallpaper bundle included.</p>
+                <h3>🖥️ Dual 120Hz Monitors</h3>
+                <p>Isolated workspace bars for laptop (1-5) and external 120Hz monitor (6-10).</p>
             </div>
             <div class="card">
-                <h3>⚡ Auto AC & Battery Power Switching</h3>
-                <p>Background daemon automatically sets max performance on AC power and switches to power-saver mode when running on battery.</p>
+                <h3>⚡ Auto Power Daemon</h3>
+                <p>Sets performance mode on AC power, downclocks to power-saver on battery.</p>
             </div>
             <div class="card">
-                <h3>🖥️ Dual & High Refresh Rate Display</h3>
-                <p>Independent per-monitor workspace bars and high refresh rate support (60Hz, 120Hz, 144Hz+).</p>
+                <h3>🎞️ Freeze-Free Resume</h3>
+                <p>DPMS wake and scanout overrides prevent sleep freeze on AMD GPUs.</p>
             </div>
             <div class="card">
-                <h3>🎨 Vintage Monochrome Aesthetic</h3>
-                <p>Crisp 1px borders, #121212 dark charcoal palette, Tokyo Night terminal theme, and sharp box geometry.</p>
+                <h3>🎨 Vintage Monochrome</h3>
+                <p>Dark #121212 palette, 1px sharp borders, Tokyo Night foot theme.</p>
             </div>
         </div>
 
         <!-- KEYBINDINGS TABLE -->
         <div class="section-title" id="binds">
             <span>✦ KEYBINDINGS</span>
-            <input type="text" class="search-box" id="keySearch" placeholder="Search keybindings..." onkeyup="filterBinds()">
+            <input type="text" class="search-box" id="keySearch" placeholder="Search..." onkeyup="filterBinds()">
         </div>
         <table id="bindsTable">
             <thead>
@@ -483,26 +474,33 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><td><kbd>SUPER</kbd> + <kbd>Enter</kbd></td><td>Open Terminal (foot)</td></tr>
-                <tr><td><kbd>SUPER</kbd> + <kbd>Space</kbd></td><td>App Launcher (Wofi)</td></tr>
-                <tr><td><kbd>SUPER</kbd> + <kbd>C</kbd></td><td>Close Active Window</td></tr>
-                <tr><td><kbd>SUPER</kbd> + <kbd>F</kbd></td><td>Toggle Fullscreen</td></tr>
-                <tr><td><kbd>SUPER</kbd> + <kbd>V</kbd></td><td>Toggle Floating Window</td></tr>
-                <tr><td><kbd>SUPER</kbd> + <kbd>L</kbd></td><td>Lock Screen (Swaylock)</td></tr>
-                <tr><td><kbd>SUPER</kbd> + <kbd>M</kbd></td><td>Exit Hyprland Session</td></tr>
-                <tr><td><kbd>SUPER</kbd> + <kbd>Tab</kbd></td><td>Switch Focus Between Monitors</td></tr>
-                <tr><td><kbd>SUPER</kbd> + <kbd>1–5</kbd></td><td>Switch Workspace (Primary Screen)</td></tr>
-                <tr><td><kbd>SUPER</kbd> + <kbd>6–10</kbd></td><td>Switch Workspace (Secondary Screen)</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>Enter</kbd></td><td>Open Terminal</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>Space</kbd></td><td>App Launcher</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>C</kbd></td><td>Close Window</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>F</kbd></td><td>Fullscreen</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>V</kbd></td><td>Toggle Floating</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>L</kbd></td><td>Lock Screen</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>M</kbd></td><td>Exit Hyprland</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>Tab</kbd></td><td>Switch Monitor Focus</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>1–5</kbd></td><td>Workspaces (Laptop)</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>6–10</kbd></td><td>Workspaces (Monitor)</td></tr>
                 <tr><td><kbd>SUPER</kbd> + <kbd>Shift</kbd> + <kbd>1–10</kbd></td><td>Move Window to Workspace</td></tr>
-                <tr><td><kbd>Print</kbd></td><td>Save Full Screenshot</td></tr>
-                <tr><td><kbd>SUPER</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd></td><td>Copy Selected Region Screenshot to Clipboard</td></tr>
+                <tr><td><kbd>Print</kbd></td><td>Screenshot Save</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd></td><td>Screenshot Region Copy</td></tr>
             </tbody>
         </table>
 
     </div>
 
+    <!-- SECRET EASTER EGG OVERLAY -->
+    <div id="easterEggOverlay">
+        <span class="egg-close" onclick="closeEgg()">[X] CLOSE</span>
+        <h2 style="color:#fff; margin-bottom: 1rem;">🎉 SECRET RETRO EASTER EGG FOUND!</h2>
+        <pre id="eggContent" style="font-size: 0.75rem; line-height: 1.2;"></pre>
+    </div>
+
     <footer>
-        <p>Hyprland Dotfiles by <a href="https://github.com/gothssmy-design" target="_blank">gothssmy-design</a> · Open Source for All Linux Users</p>
+        <p>Hyprland Dotfiles · Open Source for All Linux Users · <a href="https://github.com/gothssmy-design/hyprland-dotfiles" target="_blank">GitHub</a></p>
     </footer>
 
     <script>
@@ -530,6 +528,77 @@
                     }
                 }
             }
+        }
+
+        // INTERACTIVE TERMINAL EASTER EGGS
+        function handleTerminal(e) {
+            if (e.key === "Enter") {
+                const input = document.getElementById("termInput");
+                const out = document.getElementById("termOutput");
+                const val = input.value.trim().toLowerCase();
+                
+                let resp = "";
+                if (val === "help") {
+                    resp = "\nAvailable commands: neofetch, sl, sudo, matrix, secret, clear";
+                } else if (val === "sl") {
+                    resp = "\n   🚃💨 CHUUU CHUUU! STEAM LOCOMOTIVE OVERTAKING YOUR TERMINAL!\n   ====[____]====[____]====[____]======>";
+                } else if (val === "sudo" || val.startsWith("sudo ")) {
+                    resp = "\n[sudo] password for user: \nIncident will be reported to Santa Claus 🎅";
+                } else if (val === "matrix" || val === "secret") {
+                    triggerMatrixEgg();
+                    resp = "\n[SYSTEM] MATRIX MODE ACTIVATED!";
+                } else if (val === "neofetch") {
+                    resp = "\nOS: Linux (Universal)\nWM: Hyprland 0.56\nTerminal: foot (Tokyo Night)";
+                } else if (val === "clear") {
+                    out.innerHTML = "";
+                    input.value = "";
+                    return;
+                } else if (val !== "") {
+                    resp = `\nbash: ${val}: command not found. Type 'help' for commands.`;
+                }
+
+                out.innerHTML += `\n<span style="color:#44aa44">user@linux</span>:<span style="color:#44aaaa">~</span>$ ${input.value}${resp}`;
+                input.value = "";
+                out.scrollTop = out.scrollHeight;
+            }
+        }
+
+        // CLICK LOGO 5 TIMES EASTER EGG
+        let clicks = 0;
+        function eggClick() {
+            clicks++;
+            if (clicks >= 5) {
+                clicks = 0;
+                triggerMatrixEgg();
+            }
+        }
+
+        function triggerMatrixEgg() {
+            const overlay = document.getElementById("easterEggOverlay");
+            const content = document.getElementById("eggContent");
+            overlay.style.display = "block";
+            
+            const art = `
+    ____________________________________________________
+   /                                                    \\
+  |   HYPRLAND VINTAGE RETRO ARCHITECTURE LOADED        |
+  |                                                     |
+  |   [ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ]                      |
+  |                                                     |
+  |   > SYSTEM STATUS: ALL SYSTEMS NOMINAL              |
+  |   > MONITORS: eDP-1 (60Hz) + HDMI-A-1 (120Hz)         |
+  |   > POWER MODE: DYNAMIC DUAL DAEMON ACTIVE          |
+  |   > CURSOR: DMZ-BLACK X11 ENGINE                     |
+  |                                                     |
+  |   "Simplicity is the ultimate sophistication."      |
+  |                                - Leonardo da Vinci  |
+   \\____________________________________________________/
+            `;
+            content.innerText = art;
+        }
+
+        function closeEgg() {
+            document.getElementById("easterEggOverlay").style.display = "none";
         }
     </script>
 </body>
