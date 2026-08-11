@@ -61,6 +61,13 @@ echo -e "${GREEN}[OK]${NC} Configs installed!"
 chmod +x "$HOME/.config/hypr/"*.sh 2>/dev/null || true
 echo -e "${GREEN}[OK]${NC} Scripts made executable!"
 
+# ── COPY wallpaper ─────────────────────────────────────────────────────────────
+mkdir -p "$HOME/Pictures/Wallpapers"
+if [ -f assets/wallpaper.png ]; then
+    cp assets/wallpaper.png "$HOME/Pictures/Wallpapers/wallpaper.png"
+    echo -e "${GREEN}[OK]${NC} Wallpaper installed to ~/Pictures/Wallpapers/wallpaper.png"
+fi
+
 # ── Reload Hyprland ────────────────────────────────────────────────────────────
 if command -v hyprctl &>/dev/null; then
     echo ""
