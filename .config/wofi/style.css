@@ -1,0 +1,65 @@
+/* MINIMALIST VINTAGE CLASSIC RETRO WOFI STYLESHEET */
+
+window {
+    margin: 0px;
+    background-color: #121212;
+    border: 1px solid #444444;
+    border-radius: 0px;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 13px;
+}
+
+#input {
+    margin: 10px;
+    padding: 8px 12px;
+    border: 1px solid #444444;
+    border-radius: 0px;
+    color: #ffffff;
+    background-color: #1a1a1a;
+    font-weight: bold;
+}
+
+#input:focus {
+    border-color: #888888;
+    outline: none;
+}
+
+#inner-box {
+    margin: 4px 10px 10px 10px;
+    border: none;
+    background-color: transparent;
+}
+
+#outer-box {
+    margin: 0px;
+    border: none;
+    background-color: transparent;
+}
+
+#scroll {
+    margin: 0px;
+    border: none;
+}
+
+#text {
+    margin: 4px;
+    border: none;
+    color: #888888;
+}
+
+#entry {
+    border-radius: 0px;
+    padding: 6px 10px;
+    margin: 1px 0px;
+    background-color: transparent;
+}
+
+#entry:selected {
+    background-color: #262626;
+    border: 1px solid #555555;
+}
+
+#entry:selected #text {
+    color: #ffffff;
+    font-weight: bold;
+}

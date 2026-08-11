@@ -1,0 +1,13 @@
+max-visible=1
+width=260
+height=50
+margin=14
+padding=10
+border-size=1
+border-radius=0
+default-timeout=800
+font=JetBrainsMono Nerd Font 11
+background-color=#121212
+text-color=#ffffff
+border-color=#444444
+progress-color=over #333333

@@ -1,0 +1,113 @@
+[
+    {
+        "output": "eDP-1",
+        "layer": "top",
+        "position": "top",
+        "height": 36,
+        "spacing": 0,
+
+        "modules-left": ["hyprland/workspaces"],
+        "modules-center": ["clock"],
+        "modules-right": ["pulseaudio", "memory", "battery", "network", "custom/power"],
+
+        "hyprland/workspaces": {
+            "active-only": false,
+            "all-outputs": false,
+            "format": "[ {id} ]",
+            "on-click": "activate",
+            "persistent-workspaces": {
+                "eDP-1": [1, 2, 3, 4, 5],
+                "HDMI-A-1": [6, 7, 8, 9, 10]
+            }
+        },
+        "clock": {
+            "format": "{:%H:%M}",
+            "interval": 1,
+            "tooltip-format": "{:%A, %B %d %Y}"
+        },
+        "memory": {
+            "format": "󰍛 {percentage}%",
+            "interval": 3,
+            "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G"
+        },
+        "battery": {
+            "states": { "warning": 30, "critical": 15 },
+            "format": "{icon} {capacity}%",
+            "format-charging": "󰂄 {capacity}%",
+            "format-plugged": "󰚥",
+            "format-icons": ["󰂎", "󰁺", "󰁼", "󰁾", "󰂀", "󰁹"]
+        },
+        "network": {
+            "format-wifi": "󰤨 {essid}",
+            "format-ethernet": "󰈀 Online",
+            "format-disconnected": "󰤭 Offline",
+            "tooltip-format": "{ifname}: {ipaddr}",
+            "on-click": "nm-connection-editor"
+        },
+        "pulseaudio": {
+            "format": "{icon} {volume}%",
+            "format-muted": "󰝟",
+            "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] },
+            "on-click": "pavucontrol"
+        },
+        "custom/power": {
+            "format": "󰐥",
+            "tooltip": false,
+            "on-click": "/usr/bin/swaylock -c 121212 --font 'JetBrainsMono Nerd Font' --ring-color cccccc --key-hl-color ffffff --line-color 333333 --inside-color 181818ff --indicator-radius 80 --indicator-thickness 4"
+        }
+    },
+
+    {
+        "output": "HDMI-A-1",
+        "layer": "top",
+        "position": "top",
+        "height": 48,
+        "spacing": 0,
+
+        "modules-left": ["hyprland/workspaces"],
+        "modules-center": ["clock"],
+        "modules-right": ["pulseaudio", "memory", "battery", "network", "custom/power"],
+
+        "hyprland/workspaces": {
+            "active-only": false,
+            "all-outputs": false,
+            "format": "[ {id} ]",
+            "on-click": "activate"
+        },
+        "clock": {
+            "format": "{:%H:%M}",
+            "interval": 1,
+            "tooltip-format": "{:%A, %B %d %Y}"
+        },
+        "memory": {
+            "format": "󰍛 {percentage}%",
+            "interval": 3,
+            "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G"
+        },
+        "battery": {
+            "states": { "warning": 30, "critical": 15 },
+            "format": "{icon} {capacity}%",
+            "format-charging": "󰂄 {capacity}%",
+            "format-plugged": "󰚥",
+            "format-icons": ["󰂎", "󰁺", "󰁼", "󰁾", "󰂀", "󰁹"]
+        },
+        "network": {
+            "format-wifi": "󰤨 {essid}",
+            "format-ethernet": "󰈀 Online",
+            "format-disconnected": "󰤭 Offline",
+            "tooltip-format": "{ifname}: {ipaddr}",
+            "on-click": "nm-connection-editor"
+        },
+        "pulseaudio": {
+            "format": "{icon} {volume}%",
+            "format-muted": "󰝟",
+            "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] },
+            "on-click": "pavucontrol"
+        },
+        "custom/power": {
+            "format": "󰐥",
+            "tooltip": false,
+            "on-click": "/usr/bin/swaylock -c 121212 --font 'JetBrainsMono Nerd Font' --ring-color cccccc --key-hl-color ffffff --line-color 333333 --inside-color 181818ff --indicator-radius 80 --indicator-thickness 4"
+        }
+    }
+]

@@ -1,0 +1,145 @@
+/* =============================================================================
+   MINIMALIST VINTAGE CLASSIC RETRO WAYBAR STYLESHEET
+   Clean monochrome dark, 1px crisp borders, high-contrast active section badge
+   ============================================================================= */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", monospace;
+    font-size: 14px;
+    font-weight: 600;
+    min-height: 0;
+    transition: all 0.15s ease;
+}
+
+/* ══════════════════════════════════════════════════
+   TOP VINTAGE BAR
+   ══════════════════════════════════════════════════ */
+
+window#waybar.top {
+    background: #121212;
+    border-bottom: 1px solid #333333;
+    color: #cccccc;
+}
+
+/* ── RETRO WORKSPACE SECTION INDICATORS (TOP LEFT) ── */
+#workspaces {
+    padding: 0 4px;
+}
+
+#workspaces button {
+    padding: 2px 6px;
+    margin: 2px 2px;
+    color: #666666;
+    background: transparent;
+    border: 1px solid transparent;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+#workspaces button:hover {
+    color: #cccccc;
+    background: #1e1e1e;
+}
+
+/* HIGH-CONTRAST INVERTED ACTIVE SECTION BADGE */
+#workspaces button.active,
+#workspaces button.focused,
+#workspaces button.current {
+    color: #000000;
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    font-weight: 900;
+}
+
+/* ── CLOCK (CENTER) ───────────────────────────────── */
+#clock {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+    padding: 0 12px;
+}
+
+/* ── RIGHT RETRO MODULES ──────────────────────────── */
+#pulseaudio,
+#memory,
+#battery,
+#network,
+#custom-power {
+    padding: 0 8px;
+    margin: 2px 2px;
+    background: transparent;
+    color: #888888;
+}
+
+#pulseaudio:hover,
+#memory:hover,
+#battery:hover,
+#network:hover {
+    color: #ffffff;
+}
+
+#pulseaudio {
+    border-left: 1px solid #333333;
+}
+
+#custom-power {
+    color: #aaaaaa;
+    font-weight: 700;
+}
+
+#custom-power:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* ══════════════════════════════════════════════════
+   RETRO BOTTOM TASKBAR
+   ══════════════════════════════════════════════════ */
+
+window#waybar.bottom {
+    background: #121212;
+    border-top: 1px solid #333333;
+    color: #cccccc;
+}
+
+#taskbar {
+    padding: 0 4px;
+    background: transparent;
+}
+
+#taskbar button {
+    padding: 2px 8px;
+    margin: 2px 3px;
+    min-width: 36px;
+    background: transparent;
+    border: 1px solid transparent;
+    color: #777777;
+    transition: all 0.15s ease;
+}
+
+#taskbar button:hover {
+    color: #ffffff;
+    background: #1e1e1e;
+}
+
+#taskbar button.active,
+#taskbar button.focused {
+    background: #ffffff;
+    color: #000000;
+    font-weight: bold;
+    border: 1px solid #ffffff;
+}
+
+/* ── TOOLTIPS ─────────────────────────────────────── */
+tooltip {
+    background: #121212;
+    border: 1px solid #444444;
+    padding: 6px 12px;
+}
+
+tooltip label {
+    color: #cccccc;
+}
