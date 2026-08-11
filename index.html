@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyprland Dotfiles // Minimalist Vintage Retro</title>
+    <meta name="description" content="Minimalist Vintage Retro Hyprland setup for ThinkPad X13 Gen 1 & Linux Mint 22.3. Dual 120Hz monitors, auto power switching, and monochrome aesthetics.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-card: #121212;
+            --bg-tertiary: #1a1a1a;
+            --border-color: #333333;
+            --border-highlight: #cccccc;
+            --text-main: #cccccc;
+            --text-bright: #ffffff;
+            --text-dim: #666666;
+            --accent-green: #44aa44;
+            --accent-cyan: #44aaaa;
+            --accent-purple: #aa44aa;
+            --accent-yellow: #aaaa44;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            font-size: 14px;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--border-highlight);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        a:hover {
+            color: var(--text-bright);
+            text-decoration: underline;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--bg-card);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--text-bright);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            background: #222;
+            border: 1px solid var(--border-color);
+            color: #888;
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        nav a:hover {
+            color: var(--text-bright);
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            color: var(--text-bright);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            color: var(--text-dim);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .command-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1rem 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            max-width: 100%;
+            overflow-x: auto;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .command-text {
+            color: var(--accent-green);
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .btn-copy {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .btn-copy:hover {
+            background: var(--border-highlight);
+            color: #000;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            color: var(--text-bright);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: var(--border-highlight);
+        }
+
+        .card h3 {
+            color: var(--text-bright);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        /* TERMINAL EMULATOR PREVIEW */
+        .terminal-window {
+            background: #121212;
+            border: 1px solid var(--border-color);
+            margin-bottom: 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+
+        .terminal-header {
+            background: #1a1a1a;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.6rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        .terminal-controls {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #333;
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            min-height: 260px;
+            overflow-x: auto;
+        }
+
+        .t-green { color: var(--accent-green); }
+        .t-cyan { color: var(--accent-cyan); }
+        .t-yellow { color: var(--accent-yellow); }
+        .t-dim { color: var(--text-dim); }
+        .t-bright { color: var(--text-bright); }
+
+        /* SEARCHABLE TABLE */
+        .search-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-bright);
+            font-family: var(--font-mono);
+            padding: 0.5rem 1rem;
+            width: 240px;
+            font-size: 0.85rem;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--border-highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 3rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+        }
+
+        th, td {
+            padding: 0.8rem 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: var(--bg-tertiary);
+            color: var(--text-bright);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        td {
+            font-size: 0.85rem;
+        }
+
+        tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        kbd {
+            background: #222;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 2px 6px;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            background: var(--bg-card);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <span>HYPRLAND // RETRO</span>
+            <span class="badge">v0.56</span>
+        </div>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#binds">Keybinds</a>
+            <a href="#install">Install</a>
+            <a href="https://github.com/gothssmy-design/hyprland-dotfiles" target="_blank">GitHub ↗</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <section class="hero">
+            <h1>MINIMALIST VINTAGE RETRO</h1>
+            <p>ThinkPad X13 Gen 1 · Linux Mint 22.3 · Dual 120Hz Displays</p>
+            <div class="command-box">
+                <span class="command-text">curl -sSL https://raw.githubusercontent.com/gothssmy-design/hyprland-dotfiles/main/install.sh | bash</span>
+                <button class="btn-copy" onclick="copyCommand()">COPY</button>
+            </div>
+        </section>
+
+        <!-- TERMINAL SIMULATOR -->
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-controls">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <span>dd@ThinkPad-X13 ~ foot</span>
+                <span>bash 5.2</span>
+            </div>
+            <div class="terminal-body" id="terminal">
+                <p><span class="t-green">dd@ThinkPad-X13</span>:<span class="t-cyan">~</span>$ neofetch</p>
+                <br>
+                <p class="t-cyan">             ...-:::::-...</p>
+                <p class="t-cyan">          .-MMMMMMMMMMMMMMM-.</p>
+                <p class="t-cyan">      .-MMMM`..-:::::::-..`MMMM-.</p>
+                <p class="t-bright">  OS: <span class="t-dim">Linux Mint 22.3 Wilma</span></p>
+                <p class="t-bright">  Kernel: <span class="t-dim">7.0.0-28-generic</span></p>
+                <p class="t-bright">  WM: <span class="t-dim">Hyprland 0.56</span></p>
+                <p class="t-bright">  Terminal: <span class="t-dim">foot (Tokyo Night Theme)</span></p>
+                <p class="t-bright">  Font: <span class="t-dim">JetBrainsMono Nerd Font 14pt</span></p>
+                <p class="t-bright">  Displays: <span class="t-dim">Laptop 60Hz + 27" Philips 120Hz</span></p>
+                <p class="t-bright">  Power Daemon: <span class="t-green">Active (Auto AC/Battery Profile)</span></p>
+                <br>
+                <p><span class="t-green">dd@ThinkPad-X13</span>:<span class="t-cyan">~</span>$ <span class="t-dim">_</span></p>
+            </div>
+        </div>
+
+        <!-- FEATURES GRID -->
+        <div class="section-title" id="features">
+            <span>✦ HIGHLIGHTS</span>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3>🖥️ Dual 120Hz Monitor Setup</h3>
+                <p>Independent workspace bars for laptop screen (workspaces 1-5) and external 27" 120Hz Philips monitor (workspaces 6-10).</p>
+            </div>
+            <div class="card">
+                <h3>⚡ Auto Power Switching</h3>
+                <p>Background daemon switches CPU/GPU to performance mode on AC power, and downclocks to power-saver mode on battery.</p>
+            </div>
+            <div class="card">
+                <h3>🎞️ Freeze-Free Resume</h3>
+                <p>Custom direct-scanout and DPMS wake handlers prevent screen freezes when resuming from sleep mode on AMD GPUs.</p>
+            </div>
+            <div class="card">
+                <h3>🎨 Vintage Monochrome Style</h3>
+                <p>Crisp 1px borders, #121212 dark charcoal palette, Tokyo Night terminal theme, and sharp box geometry.</p>
+            </div>
+        </div>
+
+        <!-- KEYBINDINGS TABLE -->
+        <div class="section-title" id="binds">
+            <span>✦ KEYBINDINGS</span>
+            <input type="text" class="search-box" id="keySearch" placeholder="Search keybindings..." onkeyup="filterBinds()">
+        </div>
+        <table id="bindsTable">
+            <thead>
+                <tr>
+                    <th>Shortcut</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><kbd>SUPER</kbd> + <kbd>Enter</kbd></td><td>Open Terminal (foot)</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>Space</kbd></td><td>App Launcher (Wofi)</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>C</kbd></td><td>Close Active Window</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>F</kbd></td><td>Toggle Fullscreen</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>V</kbd></td><td>Toggle Floating Window</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>L</kbd></td><td>Lock Screen (Swaylock)</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>M</kbd></td><td>Exit Hyprland Session</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>Tab</kbd></td><td>Switch Focus Between Monitors</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>1–5</kbd></td><td>Switch Workspace (Laptop Screen)</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>6–10</kbd></td><td>Switch Workspace (External 120Hz Screen)</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>Shift</kbd> + <kbd>1–10</kbd></td><td>Move Window to Workspace</td></tr>
+                <tr><td><kbd>Print</kbd></td><td>Save Full Screenshot</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd></td><td>Copy Selected Region Screenshot to Clipboard</td></tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <footer>
+        <p>Hyprland Dotfiles by <a href="https://github.com/gothssmy-design" target="_blank">gothssmy-design</a> · Built for ThinkPad X13</p>
+    </footer>
+
+    <script>
+        function copyCommand() {
+            const cmd = "curl -sSL https://raw.githubusercontent.com/gothssmy-design/hyprland-dotfiles/main/install.sh | bash";
+            navigator.clipboard.writeText(cmd);
+            const btn = document.querySelector('.btn-copy');
+            btn.innerText = "COPIED!";
+            setTimeout(() => { btn.innerText = "COPY"; }, 2000);
+        }
+
+        function filterBinds() {
+            const input = document.getElementById("keySearch").value.toUpperCase();
+            const tr = document.getElementById("bindsTable").getElementsByTagName("tr");
+            for (let i = 1; i < tr.length; i++) {
+                const td1 = tr[i].getElementsByTagName("td")[0];
+                const td2 = tr[i].getElementsByTagName("td")[1];
+                if (td1 || td2) {
+                    const txt1 = td1.textContent || td1.innerText;
+                    const txt2 = td2.textContent || td2.innerText;
+                    if (txt1.toUpperCase().indexOf(input) > -1 || txt2.toUpperCase().indexOf(input) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
