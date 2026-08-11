@@ -47,7 +47,7 @@ cd "$INSTALL_DIR"
 BACKUP="$HOME/.config-backup-$(date +%Y%m%d_%H%M%S)"
 echo -e "${YELLOW}[BACKUP]${NC} Backing up existing configs to $BACKUP..."
 mkdir -p "$BACKUP"
-for dir in hypr waybar foot wofi mako; do
+for dir in hypr waybar foot wofi mako neofetch; do
     [ -d "$HOME/.config/$dir" ] && cp -r "$HOME/.config/$dir" "$BACKUP/" && echo "  ✓ Backed up $dir"
 done
 
