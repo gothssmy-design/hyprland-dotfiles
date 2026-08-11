@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hyprland Dotfiles // Minimalist Vintage Retro</title>
-    <meta name="description" content="Minimalist Vintage Retro Hyprland setup for ThinkPad X13 Gen 1 & Linux Mint 22.3. Dual 120Hz monitors, auto power switching, and monochrome aesthetics.">
+    <title>Hyprland Dotfiles // Universal Minimalist Vintage Retro Setup</title>
+    <meta name="description" content="Universal Minimalist Vintage Retro Hyprland setup for any Linux distribution. Dual 120Hz monitor support, auto AC/battery power management, and monochrome aesthetics.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -355,7 +355,7 @@
     <header>
         <div class="logo">
             <span>HYPRLAND // RETRO</span>
-            <span class="badge">v0.56</span>
+            <span class="badge">Universal</span>
         </div>
         <nav>
             <a href="#gallery">Screenshots</a>
@@ -369,10 +369,10 @@
 
         <section class="hero">
             <h1>MINIMALIST VINTAGE RETRO</h1>
-            <p>ThinkPad X13 Gen 1 · Linux Mint 22.3 · Dual 120Hz Displays</p>
+            <p>Universal Hyprland Setup for Any Linux Distribution & Hardware</p>
             <div class="command-box">
                 <span class="command-text">curl -sSL https://raw.githubusercontent.com/gothssmy-design/hyprland-dotfiles/main/install.sh | bash</span>
-                <button class="btn-copy" onclick="copyCommand()">COPY</button>
+                <button class="btn-copy" onclick="copyCommand()">COPY INSTALL COMMAND</button>
             </div>
         </section>
 
@@ -427,46 +427,45 @@
                     <div class="dot"></div>
                     <div class="dot"></div>
                 </div>
-                <span>dd@ThinkPad-X13 ~ foot</span>
+                <span>user@linux ~ foot</span>
                 <span>bash 5.2</span>
             </div>
             <div class="terminal-body" id="terminal">
-                <p><span class="t-green">dd@ThinkPad-X13</span>:<span class="t-cyan">~</span>$ neofetch</p>
+                <p><span class="t-green">user@linux</span>:<span class="t-cyan">~</span>$ neofetch</p>
                 <br>
                 <p class="t-cyan">             ...-:::::-...</p>
                 <p class="t-cyan">          .-MMMMMMMMMMMMMMM-.</p>
                 <p class="t-cyan">      .-MMMM`..-:::::::-..`MMMM-.</p>
-                <p class="t-bright">  OS: <span class="t-dim">Linux Mint 22.3 Wilma</span></p>
-                <p class="t-bright">  Kernel: <span class="t-dim">7.0.0-28-generic</span></p>
-                <p class="t-bright">  WM: <span class="t-dim">Hyprland 0.56</span></p>
+                <p class="t-bright">  OS: <span class="t-dim">Linux (Any Distribution)</span></p>
+                <p class="t-bright">  WM: <span class="t-dim">Hyprland 0.56+</span></p>
                 <p class="t-bright">  Terminal: <span class="t-dim">foot (Tokyo Night Theme)</span></p>
-                <p class="t-bright">  Font: <span class="t-dim">JetBrainsMono Nerd Font 14pt</span></p>
-                <p class="t-bright">  Displays: <span class="t-dim">Laptop 60Hz + 27" Philips 120Hz</span></p>
+                <p class="t-bright">  Font: <span class="t-dim">JetBrainsMono Nerd Font</span></p>
+                <p class="t-bright">  Displays: <span class="t-dim">Single / Dual Monitor (120Hz supported)</span></p>
                 <p class="t-bright">  Power Daemon: <span class="t-green">Active (Auto AC/Battery Profile)</span></p>
                 <br>
-                <p><span class="t-green">dd@ThinkPad-X13</span>:<span class="t-cyan">~</span>$ <span class="t-dim">_</span></p>
+                <p><span class="t-green">user@linux</span>:<span class="t-cyan">~</span>$ <span class="t-dim">_</span></p>
             </div>
         </div>
 
         <!-- FEATURES GRID -->
         <div class="section-title" id="features">
-            <span>✦ HIGHLIGHTS</span>
+            <span>✦ HIGHLIGHTS FOR ALL USERS</span>
         </div>
         <div class="grid">
             <div class="card">
-                <h3>🖥️ Dual 120Hz Monitor Setup</h3>
-                <p>Independent workspace bars for laptop screen (workspaces 1-5) and external 27" 120Hz Philips monitor (workspaces 6-10).</p>
+                <h3>🌍 100% Universal Compatibility</h3>
+                <p>Designed for any Linux user on any machine. Dynamic user path resolution ($HOME) and automatic wallpaper bundle included.</p>
             </div>
             <div class="card">
-                <h3>⚡ Auto Power Switching</h3>
-                <p>Background daemon switches CPU/GPU to performance mode on AC power, and downclocks to power-saver mode on battery.</p>
+                <h3>⚡ Auto AC & Battery Power Switching</h3>
+                <p>Background daemon automatically sets max performance on AC power and switches to power-saver mode when running on battery.</p>
             </div>
             <div class="card">
-                <h3>🎞️ Freeze-Free Resume</h3>
-                <p>Custom direct-scanout and DPMS wake handlers prevent screen freezes when resuming from sleep mode on AMD GPUs.</p>
+                <h3>🖥️ Dual & High Refresh Rate Display</h3>
+                <p>Independent per-monitor workspace bars and high refresh rate support (60Hz, 120Hz, 144Hz+).</p>
             </div>
             <div class="card">
-                <h3>🎨 Vintage Monochrome Style</h3>
+                <h3>🎨 Vintage Monochrome Aesthetic</h3>
                 <p>Crisp 1px borders, #121212 dark charcoal palette, Tokyo Night terminal theme, and sharp box geometry.</p>
             </div>
         </div>
@@ -492,8 +491,8 @@
                 <tr><td><kbd>SUPER</kbd> + <kbd>L</kbd></td><td>Lock Screen (Swaylock)</td></tr>
                 <tr><td><kbd>SUPER</kbd> + <kbd>M</kbd></td><td>Exit Hyprland Session</td></tr>
                 <tr><td><kbd>SUPER</kbd> + <kbd>Tab</kbd></td><td>Switch Focus Between Monitors</td></tr>
-                <tr><td><kbd>SUPER</kbd> + <kbd>1–5</kbd></td><td>Switch Workspace (Laptop Screen)</td></tr>
-                <tr><td><kbd>SUPER</kbd> + <kbd>6–10</kbd></td><td>Switch Workspace (External 120Hz Screen)</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>1–5</kbd></td><td>Switch Workspace (Primary Screen)</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>6–10</kbd></td><td>Switch Workspace (Secondary Screen)</td></tr>
                 <tr><td><kbd>SUPER</kbd> + <kbd>Shift</kbd> + <kbd>1–10</kbd></td><td>Move Window to Workspace</td></tr>
                 <tr><td><kbd>Print</kbd></td><td>Save Full Screenshot</td></tr>
                 <tr><td><kbd>SUPER</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd></td><td>Copy Selected Region Screenshot to Clipboard</td></tr>
@@ -503,7 +502,7 @@
     </div>
 
     <footer>
-        <p>Hyprland Dotfiles by <a href="https://github.com/gothssmy-design" target="_blank">gothssmy-design</a> · Built for ThinkPad X13</p>
+        <p>Hyprland Dotfiles by <a href="https://github.com/gothssmy-design" target="_blank">gothssmy-design</a> · Open Source for All Linux Users</p>
     </footer>
 
     <script>
@@ -512,7 +511,7 @@
             navigator.clipboard.writeText(cmd);
             const btn = document.querySelector('.btn-copy');
             btn.innerText = "COPIED!";
-            setTimeout(() => { btn.innerText = "COPY"; }, 2000);
+            setTimeout(() => { btn.innerText = "COPY INSTALL COMMAND"; }, 2000);
         }
 
         function filterBinds() {
